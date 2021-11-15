@@ -373,7 +373,7 @@
             "desc1": "<button> 태그는 클릭 할 수 있는 버튼을 설정합니다.",
             "desc2": "<button> 태그는 클릭 할 수 있는 버튼을 설정합니다.",
             "element": "인라인 요소(Inline Element)",
-            "tag": "닫는 태그 사용(<button> ~ </buttonx>)",
+            "tag": "닫는 태그 사용(<button> ~ </button>)",
             "version": "HTML4",
             "view": "기본적인 버튼 디자인",
             "use": "★★★",
