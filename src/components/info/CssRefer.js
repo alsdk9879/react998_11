@@ -13,7 +13,7 @@ class CssRefer extends React.Component {
             data: {
                 data: {cssRefer},
             },
-        } = await axios.get("https://raw.githubusercontent.com/lsrljm8011/react999/master/src/assets/json/css.json");
+        } = await axios.get("https://kdong1224.github.io/react999/src/assets/json/cssRefer.json");
         this.setState({refers: cssRefer, isLoading: false})
 
         console.log(cssRefer);

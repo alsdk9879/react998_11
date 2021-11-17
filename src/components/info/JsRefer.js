@@ -13,7 +13,7 @@ class JsRefer extends React.Component {
             data: {
                 data: {javascriptRefer},
             },
-        } = await axios.get("https://raw.githubusercontent.com/lsrljm8011/react999/master/src/assets/json/javascript.json");
+        } = await axios.get("https://kdong1224.github.io/react999/src/assets/json/javascriptRefer.json");
         this.setState({refers: javascriptRefer, isLoading: false})
 
         console.log(javascriptRefer);
