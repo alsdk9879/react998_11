@@ -60,8 +60,7 @@ function About(){
             </Contents>
             <Footer />
         </div>
-        
-        )
+    )
 }
 
 export default About;

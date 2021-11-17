@@ -10,7 +10,7 @@ import ContInfo from '../layouts/ContInfo';
 //     return <span>ddd</span>
 // }
 
-class ReferDetailCss extends React.Component {
+class ReferDetailJs extends React.Component {
     componentDidMount(){
         const { location, history } = this.props;
         if( location.state === undefined ){
@@ -39,14 +39,8 @@ class ReferDetailCss extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th>반환값</th>
-                                                <td>{location.state.retuens}</td>
-                                            </tr>
-                                            <tr>
                                                 <th>문법</th>
-                                                <td>{location.state.syntax.map((syn) => (
-                                                    <span className="syn" key={syn.toString()}>{syn}</span>
-                                                ))}</td>
+                                                <td>{location.state.syntax}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -72,4 +66,4 @@ class ReferDetailCss extends React.Component {
     }
 }
 
-export default ReferDetailCss;
+export default ReferDetailJs;

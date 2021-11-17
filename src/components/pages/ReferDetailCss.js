@@ -40,7 +40,7 @@ class ReferDetailCss extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th>기본값</th>
-                                                <td>{location.state.value}</td>
+                                                <td>{location.state.default1}</td>
                                             </tr>
                                             <tr>
                                                 <th>적용</th>

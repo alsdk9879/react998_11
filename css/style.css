@@ -1335,6 +1335,10 @@ select {
   margin-right: 10px;
 }
 
+.refer__cont .table h3.active {
+  border-bottom: 3px solid #fff;
+}
+
 .refer__cont .table li {
   margin: 0;
   list-style: none;
