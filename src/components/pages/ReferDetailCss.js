@@ -10,7 +10,7 @@ import ContInfo from '../layouts/ContInfo';
 //     return <span>ddd</span>
 // }
 
-class ReferDetail extends React.Component {
+class ReferDetailCss extends React.Component {
     componentDidMount(){
         const { location, history } = this.props;
         if( location.state === undefined ){
@@ -39,20 +39,16 @@ class ReferDetail extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th>요소</th>
-                                                <td>{location.state.element}</td>
+                                                <th>기본값</th>
+                                                <td>{location.state.value}</td>
                                             </tr>
                                             <tr>
-                                                <th>닫는 태그</th>
-                                                <td>{location.state.tag}</td>
+                                                <th>적용</th>
+                                                <td>{location.state.apply}</td>
                                             </tr>
                                             <tr>
                                                 <th>버전</th>
                                                 <td>{location.state.version}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>시각적 표현</th>
-                                                <td>{location.state.view}</td>
                                             </tr>
                                             <tr>
                                                 <th>사용성</th>
@@ -82,4 +78,4 @@ class ReferDetail extends React.Component {
     }
 }
 
-export default ReferDetail;
+export default ReferDetailCss;

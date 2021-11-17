@@ -1,28 +1,50 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from  'react-router-dom';
+import React from "react";
+import axios from "axios";
+import ReferInfoCss from "../info/ReferInfoCss";
 
-function ReferInfo({id, title, desc1, desc2, default1, apply, version, use, definition}){
-    return (
-        <li>
-            <Link to ={{ pathname: "refer-detail", state: {id, title, desc1, desc2, default1, apply, version, use, definition} }}>
-                <span className="num">{id}</span>
-                <span className="attr">{title}</span>
-                <span className="desc">{desc2}</span>
-                <span className="Inline">{default1}</span>
-            </Link>
-        </li>
-    )
+class CssRefer extends React.Component {
+
+    state = {
+        refers: []
+    }
+
+    getRefer = async () => {
+        const {
+            data: {
+                data: {cssRefer},
+            },
+        } = await axios.get("https://raw.githubusercontent.com/lsrljm8011/react999/master/src/assets/json/css.json");
+        this.setState({refers: cssRefer, isLoading: false})
+
+        console.log(cssRefer);
+    }
+
+    componentDidMount(){
+        this.getRefer();
+    }
+
+    render(){
+        const {refers} = this.state;
+        return (
+            <ul>
+                {refers.map((refer) => (
+                    <ReferInfoCss 
+                        key={refer.id}
+                        link={refer.link}
+                        id={refer.id}
+                        title={refer.title}
+                        desc1={refer.desc1}
+                        desc2={refer.desc2}
+                        value={refer.value}
+                        apply={refer.apply}
+                        version={refer.version}
+                        use={refer.use}
+                        definition={refer.definition}
+                    />
+                ))}
+            </ul>
+        )
+    }
 }
-ReferInfo.propTypes = {
-    id: PropTypes.number.isRequired, 
-    title: PropTypes.string.isRequired, //제목 : 문자열이라고 설정
-    desc1: PropTypes.string.isRequired, //제목 : 문자열이라고 설정
-    desc2: PropTypes.string.isRequired, //제목 : 문자열이라고 설정
-    default1: PropTypes.string.isRequired,
-    apply: PropTypes.string.isRequired,
-    version: PropTypes.string.isRequired,
-    use: PropTypes.string.isRequired,
-    definition: PropTypes.array.isRequired,
-}
-export default ReferInfo;
+
+export default CssRefer;

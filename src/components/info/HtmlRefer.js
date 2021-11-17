@@ -1,30 +1,51 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from  'react-router-dom';
+import React from "react";
+import axios from "axios";
+import ReferInfo from "../info/ReferInfo";
 
-function ReferInfo({link, id, title, desc1, desc2, element, use, tag, version, view, definition}){
-    return (
-        <li>
-            <Link to ={{ pathname: "refer-detail", state: {link, id, title, desc1, desc2, element, use, tag, version, view, definition} }}>
-                <span className="num">{id}</span>
-                <span className="attr">{title}</span>
-                <span className="desc">{desc2}</span>
-                <span className="Inline">{element}</span>
-            </Link>
-        </li>
-    )
+class HtmlRefer extends React.Component {
+
+    state = {
+        refers: []
+    }
+
+    getRefer = async () => {
+        const {
+            data: {
+                data: {htmlRefer},
+            },
+        } = await axios.get("https://rlozib.github.io/dothome21/assets/js/refer.json");
+        this.setState({refers: htmlRefer, isLoading: false})
+
+        console.log(htmlRefer);
+    }
+
+    componentDidMount(){
+        this.getRefer();
+    }
+
+    render(){
+        const {refers} = this.state;
+        return (
+            <ul>
+                {refers.map((refer) => (
+                    <ReferInfo 
+                        key={refer.id}
+                        link={refer.link}
+                        id={refer.id}
+                        title={refer.title}
+                        desc1={refer.desc1}
+                        desc2={refer.desc2}
+                        element={refer.element}
+                        use={refer.use}
+                        tag={refer.tag}
+                        version={refer.version}
+                        view={refer.view}
+                        definition={refer.definition}
+                    />
+                ))}
+            </ul>
+        )
+    }
 }
-ReferInfo.propTypes = {
-    id: PropTypes.number.isRequired, 
-    title: PropTypes.string.isRequired, //제목 : 문자열이라고 설정
-    link: PropTypes.string.isRequired, //제목 : 문자열이라고 설정
-    desc1: PropTypes.string.isRequired, //제목 : 문자열이라고 설정
-    desc2: PropTypes.string.isRequired, //제목 : 문자열이라고 설정
-    element: PropTypes.string.isRequired,
-    use: PropTypes.string.isRequired,
-    tag: PropTypes.string.isRequired,
-    version: PropTypes.string.isRequired,
-    view: PropTypes.string.isRequired,
-    definition: PropTypes.array.isRequired,
-}
-export default ReferInfo;
+
+export default HtmlRefer;
